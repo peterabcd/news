@@ -1,18 +1,17 @@
 .wrapper {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
-  padding: var(--spacing-lg) 0;
+  width: 100%;
 }
 
 .grid {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 0;
-  border-top: 1px solid var(--color-border);
-  border-left: 1px solid var(--color-border);
-  background: var(--color-border);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  height: var(--height-content);
 }
 
 .cell {
@@ -20,25 +19,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px;
-  background: var(--color-surface);
-  border-right: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--card);
   cursor: pointer;
   overflow: hidden;
-  transition: background 0.15s;
+  transition: background 0.1s;
 }
 
 .cell:hover {
-  background: var(--color-surface-hover);
+  background: var(--soft);
 }
 
 .outletName {
-  font-size: 13px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
   text-align: center;
   padding: 0 var(--spacing-sm);
-  line-height: 1.4;
+  line-height: 1.15;
   word-break: keep-all;
+  max-width: 88%;
+  color: var(--ink);
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .pill {
@@ -47,60 +51,64 @@
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
-  padding: 5px 12px;
+  height: 28px;
+  padding: 0 12px;
   border-radius: var(--radius-pill);
-  background: var(--color-overlay-bg);
-  border: 1px solid var(--color-overlay-border);
-  font-size: 11px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  font-size: 12px;
   font-weight: 500;
+  color: var(--sub);
   cursor: pointer;
+  box-shadow: var(--shadow-pill);
+  display: flex;
+  align-items: center;
+  gap: 4px;
   animation: fadeIn 0.1s ease;
-  box-shadow: var(--shadow-sm);
 }
 
-.pillSubscribe {
-  color: var(--color-primary);
-}
-
-.pillUnsubscribe {
-  color: #c00000;
+.pill:hover {
+  background: var(--soft);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from { opacity: 0; transform: translateX(-50%) translateY(3px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
+/* Chevron: 24×40, 비활성화시 opacity 0 */
 .chevron {
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 40px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  font-size: 22px;
-  color: var(--color-text-primary);
-  transition: background 0.15s;
+  font-size: 20px;
+  color: var(--mute);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.1s;
+  /* 디자인시스템: 좌측 chevron은 content 왼쪽 외부에 위치 */
 }
 
 .chevron:hover:not(:disabled) {
-  background: var(--color-surface-hover);
-  border-color: var(--color-border-hover);
+  color: var(--sub);
 }
 
 .chevronDisabled {
-  opacity: 0.3;
-  cursor: default;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .empty {
   grid-column: 1 / -1;
-  padding: var(--spacing-xl);
-  text-align: center;
-  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  color: var(--mute);
   font-size: 14px;
-  background: var(--color-surface);
+  font-weight: 500;
 }
