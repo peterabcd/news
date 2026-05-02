@@ -8,12 +8,12 @@
 
 html, body {
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo',
-    '맑은 고딕', 'Malgun Gothic', sans-serif;
-  font-size: 14px;
-  color: var(--color-text-primary);
-  background-color: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--ink);
+  background-color: var(--page);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
@@ -26,6 +26,7 @@ button {
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
+  color: inherit;
 }
 
 ul, ol {
@@ -35,4 +36,13 @@ ul, ol {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* prefers-reduced-motion: 티커 등 애니메이션 비활성화 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
