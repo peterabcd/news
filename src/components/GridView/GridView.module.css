@@ -1,0 +1,106 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) 0;
+}
+
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  background: var(--color-border);
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.15s;
+}
+
+.cell:hover {
+  background: var(--color-surface-hover);
+}
+
+.outletName {
+  font-size: 13px;
+  text-align: center;
+  padding: 0 var(--spacing-sm);
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+.pill {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-overlay-bg);
+  border: 1px solid var(--color-overlay-border);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  animation: fadeIn 0.1s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.pillSubscribe {
+  color: var(--color-primary);
+}
+
+.pillUnsubscribe {
+  color: #c00000;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.chevron {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-size: 22px;
+  color: var(--color-text-primary);
+  transition: background 0.15s;
+}
+
+.chevron:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
+}
+
+.chevronDisabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: var(--spacing-xl);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  background: var(--color-surface);
+}
