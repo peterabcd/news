@@ -19,6 +19,9 @@ Thumbs.db
 .env.local
 .env.*.local
 
+# PR 내용 초안 (로컬 참고용)
+docs/pr-content.md
+
 # Logs
 *.log
 npm-debug.log*
