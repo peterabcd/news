@@ -2,6 +2,32 @@ import type { Article, TickerItem } from '../types';
 
 export const articles: Article[] = [
   {
+    outletId: 'sbs-biz',
+    editedAt: '2026.01.14. 18:53 편집',
+    headlineTitle: '출근길 드라마 끊김 이별? 지하철 와이파이, 살짝 더 빨라졌다',
+    items: [
+      '"기다림이 폭신해졌어요" 동네 버스정류장 의자, 새 단장',
+      "데이터 걱정 내려놓기 실험… 통신사, '마음 편한 요금제' 선보여",
+      '잠들기 전에 보는 조용한 영상 한 편… OTT, 힐링 추천 기능 도입',
+      '"길 잃지 않게 도와줄게요" 친절해진 환승 안내 목소리',
+      "퇴근 시간 맞춰 환하게 '찰칵'… 스마트 조명, 집이 먼저 반겨준다",
+      "전기요금도 이제 '알림으로 다독다독'… 생활관리 습관 확산",
+    ],
+  },
+  {
+    outletId: 'asia-economy',
+    editedAt: '2026.01.14. 19:38 편집',
+    headlineTitle: "직장인 스트레스 관리 위한 '마음건강 상담' 확대",
+    items: [
+      '지자체, 소상공인 대상 친절 응대 교육 지원',
+      '생활밀착 스타트업, 직장인 대상 서비스 잇단 출시',
+      '기업문화 개선 사례 공유 확산… 자발적 참여 늘어',
+      '재택·출근 혼합 근무, 중견기업까지 확대 움직임',
+      '사내 커뮤니케이션 플랫폼 고도화 추진',
+      "기업, '워라밸 교육 프로그램' 자율 도입 확대",
+    ],
+  },
+  {
     outletId: 'maeil-economy',
     editedAt: '2026.05.02. 09:30 편집',
     headlineTitle: '코스피 2,700선 돌파…외국인 순매수 지속',
@@ -99,6 +125,8 @@ export function getArticleByOutletId(outletId: string): Article | undefined {
 }
 
 export const tickerItems: TickerItem[] = [
+  { outletName: '연합뉴스', headline: "[속보] 도심 공원 '조용한 독서존' 시범 운영… 시민 호응" },
+  { outletName: '한국경제', headline: '중소기업 ESG 전담 인력 채용 확대… 지속 가능성 주목' },
   { outletName: '매일경제', headline: '코스피 2,700선 돌파…외국인 순매수 지속' },
   { outletName: 'MBC', headline: '정부, 부동산 규제 추가 완화 발표' },
   { outletName: 'YTN', headline: '한미 정상회담…반도체 공급망 협력 강화' },

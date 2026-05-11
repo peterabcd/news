@@ -34,7 +34,7 @@ export default function CategoryTabBar({ activeCategory, onCategoryChange, progr
             {isActive && total > 0 && (
               <span className={styles.counter}>
                 <span>{currentIndex}</span>
-                <span className={styles.counterDim}>/{total}</span>
+                <span className={styles.counterDim}> / {total}</span>
               </span>
             )}
           </button>

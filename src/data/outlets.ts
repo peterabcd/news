@@ -20,11 +20,11 @@ export const outlets: Outlet[] = [
   { id: 'insight', name: 'Insight', category: '매거진/전문지', style: { color: '#ff5722', fontWeight: 'bold' } },
   { id: 'law-news', name: '법률방송뉴스', category: '방송/통신' },
   { id: 'sisajournal-e', name: '시사저널e.', category: '매거진/전문지' },
+  { id: 'business-post', name: 'BUSINESS POST', category: '종합/경제', style: { fontWeight: 'bold' } },
+  { id: 'ceo-score', name: 'CEO스코어데일리', category: '종합/경제' },
   { id: 'farmer-tv', name: '한국농어촌방송', category: '방송/통신' },
   { id: 'joynews24', name: '조이뉴스24', category: '스포츠/연예' },
   { id: 'energy-economy', name: '에너지경제', category: '종합/경제' },
-  { id: 'business-post', name: 'BUSINESS POST', category: '종합/경제', style: { fontWeight: 'bold' } },
-  { id: 'ceo-score', name: 'CEO스코어데일리', category: '종합/경제' },
   { id: 'knn', name: 'KNN', category: '방송/통신', style: { color: '#003087', fontWeight: 'bold' } },
 
   // 페이지 2
