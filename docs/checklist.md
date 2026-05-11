@@ -30,20 +30,20 @@
 
 ### 리스트 뷰
 
-- [ ] **#14** `CategoryTabBar` — 6개 카테고리 탭 + 언론사 카운터
-- [ ] **#15** `useProgressTimer` — 6초 자동 진행 타이머 훅
-- [ ] **#16** `ArticleCard` — 헤드라인 이미지 + 기사 목록 + 구독 버튼
-- [ ] **#17** `ListChevron` — 다음 언론사 수동 이동 버튼
-- [ ] **#18** `ListView` 조합 — CategoryTabBar + ArticleCard + 자동 전환
+- [x] **#14** `CategoryTabBar` — 6개 카테고리 탭 + 언론사 카운터
+- [x] **#15** `useProgressTimer` — 6초 자동 진행 타이머 훅
+- [x] **#16** `ArticleCard` — 헤드라인 이미지 + 기사 목록 + 구독 버튼
+- [x] **#17** `ListChevron` — 다음 언론사 수동 이동 버튼
+- [x] **#18** `ListView` 조합 — CategoryTabBar + ArticleCard + 자동 전환
 
 ### 뉴스 티커
 
-- [ ] **#19** `NewsTicker` — 좌우 2컬럼 자동 롤링 (3~4초, 슬라이드 업)
+- [x] **#19** `NewsTicker` — 좌우 2컬럼 자동 롤링 (3~4초, 슬라이드 업)
 
 ### 통합 및 마무리
 
-- [ ] **#20** 전체 연결 — 그리드 셀 클릭 → 리스트 뷰 진입
-- [ ] **#21** 반응형 마무리 — 최소 너비 1024px 기준 레이아웃 고정
+- [x] **#20** 전체 연결 — 그리드 셀 클릭 → 리스트 뷰 진입
+- [x] **#21** 반응형 마무리 — 최소 너비 1024px 기준 레이아웃 고정
 
 ---
 
@@ -69,18 +69,18 @@
 
 ---
 
-## 2주차 개발 범위 (예정)
+## 2주차 개발 범위 ✅
 
-| 번호 | 항목 |
-|---|---|
-| #14 | CategoryTabBar |
-| #15 | useProgressTimer |
-| #16 | ArticleCard |
-| #17 | ListChevron |
-| #18 | ListView 조합 |
-| #19 | NewsTicker |
-| #20 | 그리드 ↔ 리스트 연결 |
-| #21 | 레이아웃 마무리 |
+| 번호 | 항목 | 상태 |
+|---|---|---|
+| #14 | CategoryTabBar | ✅ |
+| #15 | useProgressTimer | ✅ |
+| #16 | ArticleCard | ✅ |
+| #17 | ListChevron | ✅ |
+| #18 | ListView 조합 | ✅ |
+| #19 | NewsTicker | ✅ |
+| #20 | 그리드 ↔ 리스트 연결 | ✅ |
+| #21 | 레이아웃 마무리 | ✅ |
 
 ---
 
