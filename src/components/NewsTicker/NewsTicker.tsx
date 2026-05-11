@@ -1,39 +1,58 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { tickerItems } from '../../data/articles'
 import styles from './NewsTicker.module.css'
 
-export default function NewsTicker() {
-  const [offset, setOffset] = useState(0)
-  const [animating, setAnimating] = useState(false)
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+const INTERVAL = 3200
+const ANIM_HALF = 275
 
+export default function NewsTicker() {
   const n = tickerItems.length
+  const half = Math.ceil(n / 2)
+
+  const [leftIndex, setLeftIndex] = useState(0)
+  const [rightIndex, setRightIndex] = useState(half % n)
+  const [leftFade, setLeftFade] = useState(false)
+  const [rightFade, setRightFade] = useState(false)
+  const rightIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const rotateLeft = useCallback(() => {
+    setLeftFade(true)
+    setTimeout(() => {
+      setLeftIndex(prev => (prev + 1) % n)
+      setLeftFade(false)
+    }, ANIM_HALF)
+  }, [n])
+
+  const rotateRight = useCallback(() => {
+    setRightFade(true)
+    setTimeout(() => {
+      setRightIndex(prev => (prev + 1) % n)
+      setRightFade(false)
+    }, ANIM_HALF)
+  }, [n])
 
   useEffect(() => {
-    timerRef.current = setInterval(() => {
-      setAnimating(true)
-      setTimeout(() => {
-        setOffset(prev => prev + 1)
-        setAnimating(false)
-      }, 300)
-    }, 3500)
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current)
-    }
-  }, [])
+    const leftTimer = setInterval(rotateLeft, INTERVAL)
+    const delayTimer = setTimeout(() => {
+      rightIntervalRef.current = setInterval(rotateRight, INTERVAL)
+    }, INTERVAL / 2)
 
-  const leftItem = tickerItems[offset % n]
-  const rightItem = tickerItems[(offset + Math.ceil(n / 2)) % n]
+    return () => {
+      clearInterval(leftTimer)
+      clearTimeout(delayTimer)
+      if (rightIntervalRef.current) clearInterval(rightIntervalRef.current)
+    }
+  }, [rotateLeft, rotateRight])
 
   return (
     <div className={styles.ticker}>
-      <div className={`${styles.column} ${animating ? styles.animating : ''}`}>
-        <span className={styles.outletName}>{leftItem.outletName}</span>
-        <span className={styles.headline}>{leftItem.headline}</span>
+      <div className={`${styles.column} ${leftFade ? styles.fading : ''}`}>
+        <span className={styles.outletName}>{tickerItems[leftIndex].outletName}</span>
+        <span className={styles.headline}>{tickerItems[leftIndex].headline}</span>
       </div>
-      <div className={`${styles.column} ${animating ? styles.animating : ''}`}>
-        <span className={styles.outletName}>{rightItem.outletName}</span>
-        <span className={styles.headline}>{rightItem.headline}</span>
+      <div className={`${styles.column} ${rightFade ? styles.fading : ''}`}>
+        <span className={styles.outletName}>{tickerItems[rightIndex].outletName}</span>
+        <span className={styles.headline}>{tickerItems[rightIndex].headline}</span>
       </div>
     </div>
   )

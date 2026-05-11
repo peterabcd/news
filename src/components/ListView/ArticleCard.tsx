@@ -18,7 +18,7 @@ export default function ArticleCard({ outlet, article, isSubscribed, onToggleSub
 
   return (
     <div className={styles.card}>
-      <div className={styles.header}>
+      <div className={styles.head}>
         <span className={styles.outletName} style={outletStyle}>{outlet.name}</span>
         <span className={styles.editedAt}>{article.editedAt}</span>
         <button className={styles.subscribeBtn} onClick={onToggleSubscription}>
@@ -26,18 +26,24 @@ export default function ArticleCard({ outlet, article, isSubscribed, onToggleSub
         </button>
       </div>
       <div className={styles.body}>
-        <div className={styles.headline}>
+        <div className={styles.left}>
           {article.headlineImage
             ? <img src={article.headlineImage} alt={article.headlineTitle} className={styles.headlineImg} />
             : <div className={styles.headlinePlaceholder} />
           }
           <p className={styles.headlineTitle}>{article.headlineTitle}</p>
         </div>
-        <ul className={styles.items}>
-          {article.items.map((item, i) => (
-            <li key={i} className={styles.item}>{item}</li>
-          ))}
-        </ul>
+        <div className={styles.right}>
+          <ul className={styles.items}>
+            {article.items.map((item, i) => (
+              <li key={i} className={styles.item}>
+                <span className={styles.bullet} />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className={styles.footnote}>{outlet.name} 언론사에서 직접 편집한 뉴스입니다.</p>
+        </div>
       </div>
     </div>
   );

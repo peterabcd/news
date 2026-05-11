@@ -58,6 +58,8 @@ export default function ListView() {
         activeCategory={activeCategory}
         onCategoryChange={handleCategoryChange}
         progress={progress}
+        currentIndex={outletArticles.length > 0 ? safeIndex + 1 : 0}
+        total={outletArticles.length}
       />
       <div className={styles.content}>
         <ListChevron direction="left" disabled={outletArticles.length <= 1} onClick={handlePrev} />
