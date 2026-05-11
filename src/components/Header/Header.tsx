@@ -1,12 +1,12 @@
 import styles from './Header.module.css'
 
 function formatDate(): string {
-  return new Intl.DateTimeFormat('ko-KR', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    weekday: 'short',
-  }).format(new Date())
+  const now = new Date()
+  const year = now.getFullYear()
+  const month = String(now.getMonth() + 1).padStart(2, '0')
+  const day = String(now.getDate()).padStart(2, '0')
+  const weekday = new Intl.DateTimeFormat('ko-KR', { weekday: 'long' }).format(now)
+  return `${year}. ${month}. ${day}. ${weekday}`
 }
 
 export default function Header() {

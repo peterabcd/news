@@ -9,10 +9,8 @@ interface Props {
 }
 
 export default function OutletCell({ outlet, onClick }: Props) {
-  const { activeTab, subscribed, toggleSubscription } = useNewsstand()
+  const { activeTab, toggleSubscription } = useNewsstand()
   const [hovered, setHovered] = useState(false)
-
-  const isSubscribed = subscribed.has(outlet.id)
 
   function handlePillClick(e: React.MouseEvent) {
     e.stopPropagation()
@@ -34,15 +32,17 @@ export default function OutletCell({ outlet, onClick }: Props) {
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
     >
-      <span className={styles.outletName} style={cellStyle}>
-        {outlet.name}
-      </span>
+      {!hovered && (
+        <span className={styles.outletName} style={cellStyle}>
+          {outlet.name}
+        </span>
+      )}
       {hovered && (
         <button
-          className={`${styles.pill} ${isSubscribed ? styles.pillUnsubscribe : styles.pillSubscribe}`}
+          className={styles.pill}
           onClick={handlePillClick}
         >
-          {activeTab === 'subscribed' || isSubscribed ? '− 해지하기' : '+ 구독하기'}
+          {activeTab === 'subscribed' ? '− 해지하기' : '+ 구독하기'}
         </button>
       )}
     </div>

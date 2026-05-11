@@ -2,20 +2,20 @@ import { useNewsstand } from '../../context/NewsstandContext'
 import styles from './TabBar.module.css'
 
 export default function TabBar() {
-  const { activeTab, setActiveTab, viewMode, setViewMode, subscribed } = useNewsstand()
+  const { activeTab, setActiveTab, viewMode, setViewMode, subscribed, setCurrentPage } = useNewsstand()
 
   return (
     <div className={styles.tabBar}>
       <div className={styles.tabs}>
         <button
           className={`${styles.tab} ${activeTab === 'all' ? styles.active : ''}`}
-          onClick={() => setActiveTab('all')}
+          onClick={() => { setActiveTab('all'); setCurrentPage(1); }}
         >
           전체 언론사
         </button>
         <button
           className={`${styles.tab} ${activeTab === 'subscribed' ? styles.active : ''}`}
-          onClick={() => setActiveTab('subscribed')}
+          onClick={() => { setActiveTab('subscribed'); setCurrentPage(1); }}
         >
           내가 구독한 언론사
           {subscribed.size > 0 && (

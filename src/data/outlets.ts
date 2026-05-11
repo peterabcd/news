@@ -72,3 +72,13 @@ export function getSubscribedOutlets(subscribedIds: Set<string>): Outlet[] {
 export function getOutletsByCategory(category: Category): Outlet[] {
   return outlets.filter(o => o.category === category);
 }
+
+export function getSubscribedOutletsByPage(subscribedIds: Set<string>, page: number): Outlet[] {
+  const all = outlets.filter(o => subscribedIds.has(o.id));
+  const start = (page - 1) * OUTLETS_PER_PAGE;
+  return all.slice(start, start + OUTLETS_PER_PAGE);
+}
+
+export function getSubscribedTotalPages(subscribedIds: Set<string>): number {
+  return Math.max(1, Math.ceil(subscribedIds.size / OUTLETS_PER_PAGE));
+}

@@ -1,10 +1,7 @@
 import { createContext, useContext, useState, useMemo } from 'react'
 import type { ReactNode } from 'react'
-import type { Category } from '../types'
+import type { Category, ViewMode, ActiveTab } from '../types'
 import { getTotalPages } from '../data/outlets'
-
-type ViewMode = 'grid' | 'list'
-type ActiveTab = 'all' | 'subscribed'
 
 interface NewsstandState {
   activeTab: ActiveTab
@@ -27,10 +24,10 @@ const NewsstandContext = createContext<NewsstandState | null>(null)
 export function NewsstandProvider({ children }: { children: ReactNode }) {
   const [activeTab, setActiveTab] = useState<ActiveTab>('all')
   const [viewMode, setViewMode] = useState<ViewMode>('grid')
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState<number>(1)
   const [subscribed, setSubscribed] = useState<Set<string>>(new Set())
   const [activeCategory, setActiveCategory] = useState<Category>('종합/경제')
-  const [currentOutletIndex, setCurrentOutletIndex] = useState(0)
+  const [currentOutletIndex, setCurrentOutletIndex] = useState<number>(0)
 
   const totalPages = useMemo(() => getTotalPages(), [])
 
@@ -46,7 +43,7 @@ export function NewsstandProvider({ children }: { children: ReactNode }) {
     })
   }
 
-  const value: NewsstandState = {
+  const value = useMemo<NewsstandState>(() => ({
     activeTab,
     viewMode,
     currentPage,
@@ -60,7 +57,7 @@ export function NewsstandProvider({ children }: { children: ReactNode }) {
     setActiveCategory,
     setCurrentOutletIndex,
     totalPages,
-  }
+  }), [activeTab, viewMode, currentPage, subscribed, activeCategory, currentOutletIndex, totalPages])
 
   return (
     <NewsstandContext.Provider value={value}>

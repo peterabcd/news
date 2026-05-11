@@ -1,3 +1,6 @@
+export type ViewMode = 'grid' | 'list'
+export type ActiveTab = 'all' | 'subscribed'
+
 export type Category =
   | '종합/경제'
   | '방송/통신'
