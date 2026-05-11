@@ -1,4 +1,4 @@
-import type { Outlet } from '../types';
+import type { Outlet, Category } from '../types';
 
 export const outlets: Outlet[] = [
   // 페이지 1
@@ -67,4 +67,8 @@ export function getTotalPages(): number {
 
 export function getSubscribedOutlets(subscribedIds: Set<string>): Outlet[] {
   return outlets.filter(o => subscribedIds.has(o.id));
+}
+
+export function getOutletsByCategory(category: Category): Outlet[] {
+  return outlets.filter(o => o.category === category);
 }

@@ -79,7 +79,24 @@ export const articles: Article[] = [
       '김민재 바이에른 주전 복귀 선언',
     ],
   },
+  {
+    outletId: 'insight',
+    editedAt: '2026.05.02. 10:00 편집',
+    headlineTitle: '2026 트렌드 키워드: AI·클린뷰티·슬로우라이프',
+    items: [
+      '올해 뷰티 시장 키워드는 "클린&그린"',
+      'MZ세대가 선택한 라이프스타일 브랜드 TOP5',
+      '명품 소비 줄고 "가성비 프리미엄" 뜬다',
+      '서울 핫플레이스 2026: 성수·망원 넘어 어디로',
+      '홈카페 문화 2년째 지속…에스프레소 머신 매출 급증',
+      '건강기능식품 구독 서비스 가입자 전년比 78% 증가',
+    ],
+  },
 ];
+
+export function getArticleByOutletId(outletId: string): Article | undefined {
+  return articles.find(a => a.outletId === outletId);
+}
 
 export const tickerItems: TickerItem[] = [
   { outletName: '매일경제', headline: '코스피 2,700선 돌파…외국인 순매수 지속' },
