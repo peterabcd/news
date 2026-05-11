@@ -20,6 +20,9 @@
   font-weight: 700;
   color: var(--ink);
   letter-spacing: -0.01em;
+  display: inline-block;
+  transform: scale(1.05);
+  transform-origin: left center;
 }
 
 .editedAt {
