@@ -1,5 +1,6 @@
 .app {
   min-height: 100vh;
+  min-width: 1024px;
   background-color: var(--page);
 }
 

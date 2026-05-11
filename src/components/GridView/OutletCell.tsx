@@ -5,9 +5,10 @@ import styles from './GridView.module.css'
 
 interface Props {
   outlet: Outlet
+  onClick?: () => void
 }
 
-export default function OutletCell({ outlet }: Props) {
+export default function OutletCell({ outlet, onClick }: Props) {
   const { activeTab, subscribed, toggleSubscription } = useNewsstand()
   const [hovered, setHovered] = useState(false)
 
@@ -28,8 +29,10 @@ export default function OutletCell({ outlet }: Props) {
   return (
     <div
       className={styles.cell}
+      style={{ cursor: onClick ? 'pointer' : undefined }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={onClick}
     >
       <span className={styles.outletName} style={cellStyle}>
         {outlet.name}
